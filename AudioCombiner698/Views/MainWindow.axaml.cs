@@ -80,11 +80,22 @@ public partial class MainWindow : Window
 
                     return;
                 }
-
+                string[] paths = null;
                 List<ISampleProvider> readers = new List<ISampleProvider>();
                 List<AudioFileReader> fileriders = new List<AudioFileReader>();
 
-                string[] paths = Directory.GetFiles(importFolderPath, "*.mp3");
+                switch (formatsCombobox.SelectedIndex)
+                {
+                    case 0:
+                        paths = Directory.EnumerateFiles(importFolderPath, "*.*").Where(x => x.EndsWith(".mp3") || x.EndsWith(".wav")).ToArray();
+                        break;
+                    case 1:
+                        paths = Directory.GetFiles(importFolderPath, "*.mp3");
+                        break;
+                    case 2:
+                        paths = Directory.GetFiles(importFolderPath, "*.wav");
+                        break;
+                }              
 
                 if (paths.Length <= 0)
                 {
@@ -127,7 +138,7 @@ public partial class MainWindow : Window
 
                 Dispatcher.UIThread.Post(() =>
                 {
-                    resultText.Text = "Обработка...\r\nЧастота дискретизации: " + sampleRate.ToString();
+                    resultText.Text = $"Обработка...\r\n{fileriders.Count} файлов\r\nЧастота дискретизации: " + sampleRate.ToString();
                 });
 
                 var outFormat = new WaveFormat(sampleRate, 1);
@@ -158,7 +169,7 @@ public partial class MainWindow : Window
 
                 Dispatcher.UIThread.Post(() =>
                 {
-                    resultText.Text = "Успешно создано под именем " + name;
+                    resultText.Text = "Успешно создано под именем " + name + $"\r\nСоединено {fileriders.Count} файлов\r\nЧастота дискретизации: {sampleRate.ToString()}";
                 });
             }
             catch

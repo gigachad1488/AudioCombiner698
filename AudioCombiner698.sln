@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioCombiner698", "AudioCombiner698\AudioCombiner698.csproj", "{A9252EED-DC0F-4B12-8B2A-41ECD0F740FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioCombiner698.Desktop", "AudioCombiner698.Desktop\AudioCombiner698.Desktop.csproj", "{5344F59F-DD33-4F54-B630-EAAEC07960AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9252EED-DC0F-4B12-8B2A-41ECD0F740FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9252EED-DC0F-4B12-8B2A-41ECD0F740FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9252EED-DC0F-4B12-8B2A-41ECD0F740FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9252EED-DC0F-4B12-8B2A-41ECD0F740FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5344F59F-DD33-4F54-B630-EAAEC07960AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5344F59F-DD33-4F54-B630-EAAEC07960AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5344F59F-DD33-4F54-B630-EAAEC07960AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5344F59F-DD33-4F54-B630-EAAEC07960AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BCF40DE-BD92-40E5-9F26-7C529028BBDE}
+	EndGlobalSection
+EndGlobal

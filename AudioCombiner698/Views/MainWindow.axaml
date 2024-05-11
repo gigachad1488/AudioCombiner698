@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AudioCombiner698.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:AudioCombiner698.Views"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        x:Class="AudioCombiner698.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+		MinHeight="300"
+		MinWidth="450"
+        Title="AudioCombiner698">
+	<Grid Background="Black" ColumnDefinitions="*, *">
+		<TextBlock Grid.Column="1" VerticalAlignment="Bottom" FontSize="10" FontWeight="Light" Margin="0, 0, 8, 8" HorizontalAlignment="Right">RBI</TextBlock>
+		<Grid Grid.Column="0" RowDefinitions="*, *">
+			<Border BorderThickness="0, 0, 0, 2" BorderBrush="White" Grid.Row="0">
+				<Grid RowDefinitions="*, *">
+					<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="importPathText"></TextBlock>
+					<Button x:Name="importButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку импорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
+				</Grid>
+			</Border>
+			<Border BorderThickness="0, 2, 0, 0" BorderBrush="White" Grid.Row="1">
+				<Grid RowDefinitions="*, *">
+					<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="exportPathText"></TextBlock>
+					<Button x:Name="exportButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку экспорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
+				</Grid>
+			</Border>
+		</Grid>
+		<Grid Grid.Column="1">
+			<Grid VerticalAlignment="Top" Height="100" RowDefinitions="*, *">
+				<TextBlock Text="Частота дискретизции" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+				<ComboBox Margin="30, 0, 30, 0" x:Name="samplesCombobox" SelectedIndex="0" Grid.Row="1" HorizontalAlignment="Stretch">
+					<ComboBox.Items>
+						<ComboBoxItem Content="Минимальная частота из всех файлов"></ComboBoxItem>
+						<ComboBoxItem Content="Максимальный частота из всех файлов"></ComboBoxItem>
+						<ComboBoxItem Content="8000"></ComboBoxItem>
+						<ComboBoxItem Content="22050"></ComboBoxItem>
+						<ComboBoxItem Content="44100"></ComboBoxItem>
+						<ComboBoxItem Content="48000"></ComboBoxItem>
+					</ComboBox.Items>
+				</ComboBox>
+			</Grid>
+			<Border BorderThickness="4, 0, 0, 0" BorderBrush="White">
+				<Button Margin="20, 0, 20 ,0" FontSize="20" HorizontalAlignment="Stretch" FontWeight="Black" x:Name="combineButton" Content="совместить" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
+			</Border>
+			<TextBlock x:Name="resultText" VerticalAlignment="Bottom" Margin="5, 0, 5, 30" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"  Foreground="White"></TextBlock>
+		</Grid>
+	</Grid>
+</Window>

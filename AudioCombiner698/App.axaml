@@ -1,0 +1,239 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AudioCombiner698.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+		<Style Selector="ListBox">
+			<Style Selector="^ ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="Transparent"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="20"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^ ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="Transparent"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="60"></DropShadowEffect>
+				</Setter>
+			</Style>
+		</Style>
+
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="White"></Setter>
+			<Setter Property="Effect">
+				<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="15" Opacity="1"></DropShadowEffect>
+			</Setter>
+		</Style>
+
+		<Style Selector="TextBox">
+			<Setter Property="SelectionBrush" Value="Black"></Setter>
+			<Setter Property="BorderBrush" Value="White"></Setter>
+			<Setter Property="Background" Value="Transparent"></Setter>
+			<Setter Property="CaretBrush" Value="White"></Setter>
+			<Setter Property="Foreground" Value="White"></Setter>
+			<Setter Property="Effect">
+				<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="5" Opacity="1"></DropShadowEffect>
+			</Setter>
+
+			<Style Selector="^:focus /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="Transparent"></Setter>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="70" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="Transparent"/>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="70" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^:focus">
+				<Setter Property="TextElement.Foreground" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:pointerover">
+				<Setter Property="TextElement.Foreground" Value="White"></Setter>
+			</Style>
+		</Style>
+
+		<Style Selector="Button">
+			<Setter Property="Background" Value="White"></Setter>
+			<Setter Property="RenderTransform" Value="scale(1)"></Setter>
+			<Setter Property="Effect">
+				<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="10" Opacity="1"></DropShadowEffect>
+			</Setter>
+
+			<Style Selector="^:disabled">
+				<Setter Property="Effect">
+					<DropShadowEffect Color="Black" OffsetX="0" OffsetY="0" BlurRadius="10" Opacity="1"></DropShadowEffect>
+				</Setter>
+
+				<Style Selector="^ ContentPresenter#PART_ContentPresenter">
+					<Setter Property="Background" Value="Black"></Setter>
+					<Setter Property="Foreground" Value="White"></Setter>
+				</Style>
+			</Style>
+
+			<Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="White"></Setter>
+			</Style>
+		</Style>
+
+		<Style Selector="Button.GodButton">
+			<Setter Property="Transitions">
+				<Transitions>
+					<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.1"></TransformOperationsTransition>
+				</Transitions>
+			</Setter>
+
+			<Style Selector="^:pointerover">
+				<Setter Property="RenderTransform" Value="scale(1.05)"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="30" Opacity="1"></DropShadowEffect>
+				</Setter>
+
+				<Style.Animations>
+					<Animation Duration="0:0:0.15">
+						<KeyFrame Cue="0%">
+							<Setter Property="Effect">
+								<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="10" Opacity="1"></DropShadowEffect>
+							</Setter>
+						</KeyFrame>
+						<KeyFrame Cue="50%">
+							<Setter Property="Effect">
+								<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="20" Opacity="1"></DropShadowEffect>
+							</Setter>
+						</KeyFrame>
+						<KeyFrame Cue="100%">
+							<Setter Property="Effect">
+								<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="30" Opacity="1"></DropShadowEffect>
+							</Setter>
+						</KeyFrame>
+					</Animation>
+				</Style.Animations>
+			</Style>
+		</Style>
+
+		<Style Selector="ComboBox">
+			<Setter Property="Background" Value="Black"></Setter>
+			<Setter Property="BorderBrush" Value="White"></Setter>
+
+			<Style Selector="^ /template/ PathIcon#DropDownGlyph /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="10" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^:dropdownopen /template/ PathIcon#DropDownGlyph /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:focus /template/ PathIcon#DropDownGlyph /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:pressed /template/ Border#Background">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:selected /template/ PathIcon#DropDownGlyph /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:pointerover /template/ PathIcon#DropDownGlyph /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:dropdownopen /template/ Border#PopupBorder">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^:pointerover /template/ Border#Background">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^ /template/ Border#Background">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="5" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^ ComboBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="70" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^ ComboBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="10" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^ ComboBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter TextBlock">
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="60" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^:focus /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="Black"></Setter>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="70" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+
+			<Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+				<Setter Property="Background" Value="Black"/>
+				<Setter Property="BorderBrush" Value="White"></Setter>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="White" OffsetX="0" OffsetY="0" BlurRadius="70" Opacity="1"></DropShadowEffect>
+				</Setter>
+			</Style>
+		</Style>
+
+		<Style Selector="ScrollBar:vertical">
+			<Style Selector="^ /template/ PathIcon /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^ /template/ Thumb /template/ Border">
+				<Setter Property="Background" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^ /template/ Rectangle#TrackRect">
+				<Setter Property="Fill" Value="Black"></Setter>
+			</Style>
+		</Style>
+
+		<Style Selector="ScrollBar:horizontal">
+			<Style Selector="^ /template/ PathIcon /template/ Path">
+				<Setter Property="Fill" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^ /template/ Thumb /template/ Border">
+				<Setter Property="Background" Value="White"></Setter>
+			</Style>
+
+			<Style Selector="^ /template/ Rectangle#TrackRect">
+				<Setter Property="Fill" Value="Black"></Setter>
+			</Style>
+		</Style>
+    </Application.Styles>
+</Application>

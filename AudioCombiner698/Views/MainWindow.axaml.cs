@@ -57,6 +57,7 @@ public partial class MainWindow : Window
     public async void Combine()
     {
         resultText.Text = "Обработка...";
+        combineButton.IsEnabled = false;
 
         await Task.Run(() =>
         {
@@ -80,7 +81,7 @@ public partial class MainWindow : Window
 
                     return;
                 }
-                string[] paths = null;
+                string[] paths = [];
                 List<ISampleProvider> readers = new List<ISampleProvider>();
                 List<AudioFileReader> fileriders = new List<AudioFileReader>();
 
@@ -120,34 +121,39 @@ public partial class MainWindow : Window
                         sampleRate = fileriders.Min(x => x.WaveFormat.SampleRate);
                         break;
                     case 1:
-                        sampleRate = fileriders.Max(x => x.WaveFormat.SampleRate);
+                        sampleRate = Convert.ToInt32(fileriders.Average(x => x.WaveFormat.SampleRate));
                         break;
                     case 2:
-                        sampleRate = 8000;
+                        sampleRate = fileriders.Max(x => x.WaveFormat.SampleRate);
                         break;
                     case 3:
-                        sampleRate = 22050;
+                        sampleRate = 8000;
                         break;
                     case 4:
-                        sampleRate = 44100;
+                        sampleRate = 22050;
                         break;
                     case 5:
+                        sampleRate = 44100;
+                        break;
+                    case 6:
                         sampleRate = 48000;
                         break;
                 }
 
+                int channels = channelsCombobox.SelectedIndex + 1;
+
                 Dispatcher.UIThread.Post(() =>
                 {
-                    resultText.Text = $"Обработка...\r\n{fileriders.Count} файлов\r\nЧастота дискретизации: " + sampleRate.ToString();
+                    resultText.Text = $"Обработка...\r\n{fileriders.Count} файлов\r\nЧастота дискретизации: " + sampleRate.ToString() + "\r\nКаналов: " + channels;
                 });
 
-                var outFormat = new WaveFormat(sampleRate, 1);
+                var outFormat = new WaveFormat(sampleRate, channels);
 
                 foreach (var r in fileriders)
                 {
                     ISampleProvider provider = null;
 
-                    if (r.WaveFormat.SampleRate < sampleRate || r.WaveFormat.SampleRate > sampleRate || r.WaveFormat.Channels > 1)
+                    if (r.WaveFormat.SampleRate < sampleRate || r.WaveFormat.SampleRate > sampleRate || r.WaveFormat.Channels != channels)
                     {
                         provider = new MediaFoundationResampler(r.ToWaveProvider(), outFormat).ToSampleProvider();
                     }
@@ -169,7 +175,8 @@ public partial class MainWindow : Window
 
                 Dispatcher.UIThread.Post(() =>
                 {
-                    resultText.Text = "Успешно создано под именем " + name + $"\r\nСоединено {fileriders.Count} файлов\r\nЧастота дискретизации: {sampleRate.ToString()}";
+                    resultText.Text = "Успешно создано под именем " + name + $"\r\nСоединено {fileriders.Count} файлов\r\nЧастота дискретизации: {sampleRate.ToString()}\r\nКаналов: {channels}";
+                    combineButton.IsEnabled = true;
                 });
             }
             catch
@@ -177,25 +184,9 @@ public partial class MainWindow : Window
                 Dispatcher.UIThread.Post(() =>
                 {
                     resultText.Text = "Ошибка обработки (невозможно)";
+                    combineButton.IsEnabled = true;
                 });
             }
         });
-    }
-
-    public static void Combine(string[] inputFiles, Stream output)
-    {
-        foreach (string file in inputFiles)
-        {
-            Mp3FileReader reader = new Mp3FileReader(file);
-            if ((output.Position == 0) && (reader.Id3v2Tag != null))
-            {
-                output.Write(reader.Id3v2Tag.RawData, 0, reader.Id3v2Tag.RawData.Length);
-            }
-            Mp3Frame frame;
-            while ((frame = reader.ReadNextFrame()) != null)
-            {
-                output.Write(frame.RawData, 0, frame.RawData.Length);
-            }
-        }
     }
 }

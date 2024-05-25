@@ -10,47 +10,76 @@
 		MinHeight="400"
 		MinWidth="500"
         Title="AudioCombiner698">
-	<Grid Background="Black" ColumnDefinitions="*, *">
-		<TextBlock Grid.Column="1" VerticalAlignment="Bottom" FontSize="10" FontWeight="Light" Margin="0, 0, 8, 8" HorizontalAlignment="Right">RBI</TextBlock>
-		<Grid Grid.Column="0" RowDefinitions="*, *">
-			<Border BorderThickness="0, 0, 0, 2" BorderBrush="White" Grid.Row="0">
-				<Grid RowDefinitions="*, *">
-					<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="importPathText"></TextBlock>
-					<Button x:Name="importButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку импорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
-					<ComboBox Margin="30, 0, 30, 10" x:Name="formatsCombobox" VerticalAlignment="Bottom" SelectedIndex="0" Grid.Row="1" Width="100" HorizontalAlignment="Center">
-						<ComboBox.Items>
-							<ComboBoxItem Content="Все"></ComboBoxItem>
-							<ComboBoxItem Content="mp3"></ComboBoxItem>
-							<ComboBoxItem Content="wav"></ComboBoxItem>
-						</ComboBox.Items>
-					</ComboBox>
-				</Grid>
-			</Border>
-			<Border BorderThickness="0, 2, 0, 0" BorderBrush="White" Grid.Row="1">
-				<Grid RowDefinitions="*, *">
-					<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="exportPathText"></TextBlock>
-					<Button x:Name="exportButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку экспорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
-				</Grid>
-			</Border>
-		</Grid>
-		<Grid Grid.Column="1">
-			<Grid VerticalAlignment="Top" Height="100" RowDefinitions="*, *">
-				<TextBlock Text="Частота дискретизции" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-				<ComboBox Margin="30, 0, 30, 0" x:Name="samplesCombobox" SelectedIndex="0" Grid.Row="1" HorizontalAlignment="Stretch">
-					<ComboBox.Items>
-						<ComboBoxItem Content="Минимальная частота из всех файлов"></ComboBoxItem>
-						<ComboBoxItem Content="Максимальный частота из всех файлов"></ComboBoxItem>
-						<ComboBoxItem Content="8000"></ComboBoxItem>
-						<ComboBoxItem Content="22050"></ComboBoxItem>
-						<ComboBoxItem Content="44100"></ComboBoxItem>
-						<ComboBoxItem Content="48000"></ComboBoxItem>
-					</ComboBox.Items>
-				</ComboBox>
+	<Window.Styles>
+		<Style Selector="Border.GffflowBorder">
+			<Setter Property="Effect">
+				<DropShadowEffect Color="white" OffsetX="0" OffsetY="0" BlurRadius="20"></DropShadowEffect>
+			</Setter>
+		</Style>
+	</Window.Styles>
+	<Border Classes="GlowBorder" BorderBrush="White" BorderThickness="2">
+		<Grid Background="Black" ColumnDefinitions="*, *">
+			<TextBlock Grid.Column="1" VerticalAlignment="Bottom" FontSize="10" FontWeight="Light" Margin="0, 0, 8, 8" HorizontalAlignment="Right">RBI</TextBlock>
+			<Grid Grid.Column="0" RowDefinitions="*, *">
+				<Border BorderThickness="0, 0, 0, 2" BorderBrush="White" Grid.Row="0">
+					<Grid RowDefinitions="*, *">
+						<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="importPathText"></TextBlock>
+						<Button x:Name="importButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку импорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
+						<ComboBox Margin="30, 0, 30, 10" x:Name="formatsCombobox" VerticalAlignment="Bottom" SelectedIndex="0" Grid.Row="1" Width="100" HorizontalAlignment="Center">
+							<ComboBox.Items>
+								<ComboBoxItem Content="Все"></ComboBoxItem>
+								<ComboBoxItem Content="mp3"></ComboBoxItem>
+								<ComboBoxItem Content="wav"></ComboBoxItem>
+							</ComboBox.Items>
+						</ComboBox>
+					</Grid>
+				</Border>
+				<Border BorderThickness="0, 2, 0, 0" BorderBrush="White" Grid.Row="1">
+					<Grid RowDefinitions="*, *">
+						<TextBlock Foreground="White" Margin="5" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" x:Name="exportPathText"></TextBlock>
+						<Button x:Name="exportButton" Classes="GodButton" Grid.Row="1" Height="50" Content="Выбрать папку экспорта" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"  VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
+					</Grid>
+				</Border>
 			</Grid>
-			<Border BorderThickness="4, 0, 0, 0" BorderBrush="White">
-				<Button Margin="20, 0, 20 ,0" FontSize="20" HorizontalAlignment="Stretch" FontWeight="Black" x:Name="combineButton" Content="совместить" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
-			</Border>
-			<TextBlock x:Name="resultText" VerticalAlignment="Bottom" Margin="5, 0, 5, 30" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"  Foreground="White"></TextBlock>
+			<Grid Grid.Column="1">
+				<Border BorderBrush="White" BorderThickness="3, 0, 0, 0">
+					<Grid RowDefinitions="0.5*, *">
+						<Grid Margin="0, 0, 0, 5" Grid.Row="0" RowDefinitions="*, *">
+							<Grid VerticalAlignment="Center" Grid.Row="0" RowDefinitions="*, *">
+								<TextBlock Text="Частота дискретизции" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+								<ComboBox Margin="30, 0, 30, 0" x:Name="samplesCombobox" SelectedIndex="0" Grid.Row="1" HorizontalAlignment="Stretch">
+									<ComboBox.Items>
+										<ComboBoxItem Content="Минимальная частота из всех файлов"></ComboBoxItem>
+										<ComboBoxItem Content="Средняя частота из всех файлов"></ComboBoxItem>
+										<ComboBoxItem Content="Максимальный частота из всех файлов"></ComboBoxItem>
+										<ComboBoxItem Content="8000"></ComboBoxItem>
+										<ComboBoxItem Content="22050"></ComboBoxItem>
+										<ComboBoxItem Content="44100"></ComboBoxItem>
+										<ComboBoxItem Content="48000"></ComboBoxItem>
+									</ComboBox.Items>
+								</ComboBox>
+							</Grid>
+							<Grid VerticalAlignment="Center" Grid.Row="1" RowDefinitions="*, *">
+								<TextBlock Text="Каналы" TextWrapping="Wrap" TextAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+								<ComboBox x:Name="channelsCombobox" SelectedIndex="0" Margin="30, 0, 30, 0" Grid.Row="1" HorizontalAlignment="Stretch">
+									<ComboBox.Items>
+										<ComboBoxItem Content="1"></ComboBoxItem>
+										<ComboBoxItem Content="2"></ComboBoxItem>
+									</ComboBox.Items>
+								</ComboBox>
+							</Grid>
+						</Grid>
+						<Border Grid.Row="1" BorderBrush="White" BorderThickness="0, 1, 0, 0">
+							<Grid RowDefinitions="*, *">
+								<Button Grid.Row="0" Margin="20, 0, 20 ,0" FontSize="20" HorizontalAlignment="Stretch" FontWeight="Black" x:Name="combineButton" Content="совместить" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Button>
+								<Border Grid.Row="1" BorderThickness="0, 1, 0, 0" BorderBrush="White">
+									<TextBlock x:Name="resultText" VerticalAlignment="Bottom" Margin="5, 0, 5, 30" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" HorizontalAlignment="Center"  Foreground="White"></TextBlock>
+								</Border>
+							</Grid>
+						</Border>
+					</Grid>
+				</Border>
+			</Grid>
 		</Grid>
-	</Grid>
+	</Border>
 </Window>
